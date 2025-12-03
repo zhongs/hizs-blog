@@ -1,0 +1,115 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "@components/Container.astro";
+
+const title = "QR Code Generator";
+const description = "A simple tool to generate QR codes from text or URLs.";
+---
+
+<Layout title={title} description={description}>
+  <Container>
+    <div class="mt-16 flex flex-col items-center gap-8">
+      <div class="animate text-center">
+        <h1 class="text-3xl font-semibold text-black dark:text-white">
+          QR Code Generator 📱
+        </h1>
+        <p class="mt-2 text-black/60 dark:text-white/60">
+          Enter text or URL to generate a QR code instantly.
+        </p>
+      </div>
+
+      <div class="animate w-full max-w-md space-y-6 rounded-xl border border-black/15 bg-white p-6 shadow-sm dark:border-white/20 dark:bg-neutral-900">
+        <div class="space-y-2">
+          <label for="qr-input" class="text-sm font-medium text-black dark:text-white">
+            Content
+          </label>
+          <textarea
+            id="qr-input"
+            rows="3"
+            class="w-full rounded-lg border border-black/15 bg-transparent px-3 py-2 text-black placeholder:text-black/40 focus:border-black focus:outline-none focus:ring-1 focus:ring-black dark:border-white/20 dark:text-white dark:placeholder:text-white/40 dark:focus:border-white dark:focus:ring-white"
+            placeholder="https://example.com"
+          ></textarea>
+        </div>
+
+        <div class="flex flex-col items-center justify-center gap-4 rounded-lg border border-dashed border-black/15 bg-black/5 p-8 dark:border-white/20 dark:bg-white/5">
+          <canvas id="qr-canvas" class="hidden rounded-md"></canvas>
+          <div id="placeholder-text" class="text-sm text-black/40 dark:text-white/40">
+            QR Code will appear here
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            id="download-btn"
+            class="hidden w-full rounded-lg bg-black py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/80"
+          >
+            Download PNG
+          </button>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Layout>
+
+<script>
+  import QRCode from "qrcode";
+
+  const input = document.getElementById("qr-input") as HTMLTextAreaElement;
+  const canvas = document.getElementById("qr-canvas") as HTMLCanvasElement;
+  const placeholder = document.getElementById("placeholder-text");
+  const downloadBtn = document.getElementById("download-btn");
+
+  const generateQR = async (text: string) => {
+    if (!text.trim()) {
+      canvas.classList.add("hidden");
+      downloadBtn?.classList.add("hidden");
+      placeholder?.classList.remove("hidden");
+      return;
+    }
+
+    try {
+      await QRCode.toCanvas(canvas, text, {
+        width: 300,
+        margin: 2,
+        color: {
+          dark: "#000000",
+          light: "#ffffff",
+        },
+      });
+      canvas.classList.remove("hidden");
+      placeholder?.classList.add("hidden");
+      downloadBtn?.classList.remove("hidden");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Debounce function to prevent too many generations
+  let timeoutId: ReturnType<typeof setTimeout>;
+  const debounce = (func: Function, delay: number) => {
+    return (...args: any[]) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  input?.addEventListener(
+    "input",
+    debounce((e: Event) => {
+      const target = e.target as HTMLTextAreaElement;
+      generateQR(target.value);
+    }, 300)
+  );
+
+  // Initial generation if input has value
+  if (input?.value) {
+    generateQR(input.value);
+  }
+
+  downloadBtn?.addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.download = "qrcode.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+</script>
