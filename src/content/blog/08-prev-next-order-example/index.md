@@ -2,6 +2,7 @@
 title: "Chronological pagination example"
 description: "Pagination works regardless of folder name."
 date: "2024-03-21"
+draft: true
 tags:
   - example
 ---
