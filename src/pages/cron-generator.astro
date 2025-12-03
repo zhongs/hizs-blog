@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import CronComponent from "@components/tools/CronGenerator";
+
+const title = "Cron Generator";
+const description = "Generate and translate cron expressions instantly.";
+---
+
+<Layout title={title} description={description}>
+  <Container>
+    <div class="mt-10 flex flex-col gap-8">
+      <div class="animate">
+        <h1 class="text-2xl font-semibold text-black dark:text-white">
+          Cron Generator ⏰
+        </h1>
+        <p class="mt-1 text-black/60 dark:text-white/60">
+          Generate, parse, and explain cron schedules in plain English (and Chinese).
+        </p>
+      </div>
+
+      <div class="animate w-full">
+        <CronComponent client:load />
+      </div>
+
+      <div class="animate mt-8 prose dark:prose-invert">
+        <h3>Format</h3>
+        <p>
+          <code>* * * * *</code> corresponds to:
+        </p>
+        <ul>
+          <li>Minute (0 - 59)</li>
+          <li>Hour (0 - 23)</li>
+          <li>Day of Month (1 - 31)</li>
+          <li>Month (1 - 12)</li>
+          <li>Day of Week (0 - 6) (Sunday to Saturday)</li>
+        </ul>
+      </div>
+    </div>
+  </Container>
+</Layout>
