@@ -3,7 +3,7 @@ import type { Metadata, Site, Socials } from "@types";
 export const SITE: Site = {
   TITLE: "HiZS",
   DESCRIPTION: "专注于前端技术分享，Vue/React 实战经验，以及独立开发者的被动收入探索。",
-  EMAIL: "zhongsheng@hizs.top",
+  EMAIL: "191492580@qq.com",
   NUM_POSTS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
