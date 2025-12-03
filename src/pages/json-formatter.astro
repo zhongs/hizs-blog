@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import JsonEditor from "@components/tools/JsonEditor";
+
+const title = "JSON Formatter & Validator";
+const description = "A minimalist, ad-free JSON formatter and validator with Monaco Editor.";
+---
+
+<Layout title={title} description={description}>
+  <Container>
+    <div class="mt-10 flex flex-col gap-4">
+      <div class="animate">
+        <h1 class="text-2xl font-semibold text-black dark:text-white">
+          JSON Formatter & Validator 🛠️
+        </h1>
+        <p class="mt-1 text-black/60 dark:text-white/60">
+          Format, validate, and minify your JSON data instantly.
+        </p>
+      </div>
+
+      <div class="animate mt-4 w-full">
+        <JsonEditor client:only="react" />
+      </div>
+
+      <div class="animate mt-8 prose dark:prose-invert">
+        <h3>Why use this tool?</h3>
+        <ul>
+          <li><strong>Privacy First:</strong> Your data never leaves your browser. All processing is done locally.</li>
+          <li><strong>Powered by Monaco:</strong> Uses the same editor engine as VS Code for a premium editing experience.</li>
+          <li><strong>Features:</strong> Syntax highlighting, error detection, code folding, and auto-formatting.</li>
+        </ul>
+      </div>
+    </div>
+  </Container>
+</Layout>
