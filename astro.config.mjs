@@ -8,7 +8,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-micro.vercel.app",
+  site: "https://hizs.top",
   integrations: [sitemap(), mdx(), pagefind()],
 
   vite: {
