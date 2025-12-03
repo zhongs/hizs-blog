@@ -1,40 +1,32 @@
 import type { Metadata, Site, Socials } from "@types";
 
 export const SITE: Site = {
-  TITLE: "Hi, ZS",
-  DESCRIPTION: "Astro Micro is an accessible and lightweight blog.",
-  EMAIL: "191492580@qq.com",
+  TITLE: "HiZS",
+  DESCRIPTION: "专注于前端技术分享，Vue/React 实战经验，以及独立开发者的被动收入探索。",
+  EMAIL: "zhongsheng@hizs.top",
   NUM_POSTS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Astro Micro is an accessible theme for Astro.",
+  TITLE: "前端开发与技术复盘",
+  DESCRIPTION: "专注于前端技术分享，Vue/React 实战经验，以及独立开发者的被动收入探索。",
 };
 
 export const BLOG: Metadata = {
-  TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  TITLE: "文章",
+  DESCRIPTION: "分享前端技术心得与实战经验。",
 };
 
 export const PROJECTS: Metadata = {
-  TITLE: "Projects",
+  TITLE: "项目",
   DESCRIPTION:
-    "A collection of my projects with links to repositories and live demos.",
+    "我的个人项目与独立开发产品。",
 };
 
 export const SOCIALS: Socials = [
   {
-    NAME: "X (formerly Twitter)",
-    HREF: "https://twitter.com/boogerbuttcheek",
-  },
-  {
     NAME: "GitHub",
-    HREF: "https://github.com/trevortylerlee",
-  },
-  {
-    NAME: "Website",
-    HREF: "https://trevortylerlee.com",
+    HREF: "https://github.com/zhongs",
   },
 ];
