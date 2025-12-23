@@ -23,6 +23,8 @@ tags:
 - **全栈化趋势**：Node.js 生态让前端可以快速搭建 Agent 后端
 - **可视化能力**：Agent 的调试、监控都需要良好的可视化界面
 
+> 前端学习智能体开发，不是要去学怎么训练模型，而是学习怎么组装模型。把你熟悉的 fetch 请求变成智能的对话，把你的 utils 函数变成 AI 的工具。
+
 ## 什么是 AI Agent？
 
 简单来说，**AI Agent = LLM + Memory + Tools + Planning**
